@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import * as routes from '../constants/routes';
 import SignOutButton from './SignOut';
 
-const Navigation = (props, { authUser }) => (
+const Navigation = ({ authUser }) => (
   <div>
     { authUser 
         ? <NavigationAuth />
@@ -14,7 +14,7 @@ const Navigation = (props, { authUser }) => (
   </div>
 );
 
-Navigation.contextTypes = {
+Navigation.propTypes = {
   authUser: PropTypes.object,
 };
 

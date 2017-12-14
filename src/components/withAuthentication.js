@@ -5,29 +5,26 @@ import { firebase } from '../firebase';
 
 const withAuthentication = (Component) => {
   class WithAuthentication extends React.Component {
-    state = { authUser: null }
+    state = { authUser: null, loading: true }
 
-    static childContextTypes = {
-      authUser: PropTypes.object,
-    }
-
-    getChildContext() {
-      return {
-        authUser: this.state.authUser,
-      };
-    }
-    
     componentDidMount() {
       firebase.auth.onAuthStateChanged(authUser => {
         authUser
-          ? this.setState(() => ({ authUser }))
-          : this.setState(() => ({ authUser: null }));
+          ? this.setState(() => ({ authUser, loading: false }))
+          : this.setState(() => ({ authUser: null, loading: false }));
       });
     }
 
     render() {
+      const { loading, authUser } = this.state;
       return (
-        <Component />
+        <div>
+          { 
+            loading 
+              ? <p>Loading...</p> 
+              : <Component authUser={this.state.authUser}/> 
+          }
+        </div>
       );
     }
   }

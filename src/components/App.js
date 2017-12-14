@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { 
   BrowserRouter as Router,
   Route
@@ -6,19 +7,19 @@ import {
 
 import withAuthentication from './withAuthentication';
 import Navigation from './Navigation';
-import LandingPage from './LandingPage';
+import LandingPage from './Landing';
 import SignUpPage from './SignUp';
 import SignInPage from './SignIn';
 import PasswordForgetPage from './PasswordForget';
-import HomePage from './HomePage';
-import AccountPage from './AccountPage';
+import HomePage from './Home';
+import AccountPage from './Account';
 
 import * as routes from '../constants/routes';
 
-const App = () => (
+const App = ({authUser}) => (
   <Router>
     <div>
-      <Navigation />
+      <Navigation authUser={authUser} />
       <hr/>
       <Route 
         exact path={routes.LANDING}
@@ -42,10 +43,14 @@ const App = () => (
       />
       <Route 
         exact path={routes.ACCOUNT}
-        component={() => <AccountPage />}
+        component={() => <AccountPage authUser={authUser} />}
       />
     </div>
   </Router>
 )
+
+App.propTypes = {
+  authUser: PropTypes.object
+};
 
 export default withAuthentication(App);
