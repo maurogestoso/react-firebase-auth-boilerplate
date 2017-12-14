@@ -1,9 +1,7 @@
-var config = {
-  apiKey: "AIzaSyClFaQsybdnD4sm665J-_4TrFOs1W8kTgw",
-  authDomain: "react-firebase-auth-dda30.firebaseapp.com",
-  databaseURL: "https://react-firebase-auth-dda30.firebaseio.com",
-  projectId: "react-firebase-auth-dda30",
-  storageBucket: "",
-  messagingSenderId: "714452692329"
+import * as auth from './auth';
+import * as firebase from './firebase';
+
+export {
+  auth,
+  firebase,
 };
-firebase.initializeApp(config);

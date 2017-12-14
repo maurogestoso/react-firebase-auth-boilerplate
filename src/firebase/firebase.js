@@ -25,4 +25,8 @@ if (!firebase.apps.length) {
   firebase.initializeApp(config[NODE_ENV]);
 }
 
-export const auth = firebase.auth();
+const auth = firebase.auth();
+
+export {
+  auth,
+};
