@@ -7,6 +7,7 @@ import {
 import Navigation from './Navigation';
 import LandingPage from './LandingPage';
 import SignUpPage from './SignUp';
+import SignInPage from './SignIn';
 import PasswordForgetPage from './PasswordForgetPage';
 import HomePage from './HomePage';
 import AccountPage from './AccountPage';
